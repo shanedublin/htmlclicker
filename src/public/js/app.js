@@ -1,20 +1,22 @@
 //(function(){
 	'use-strict';
-	let money = 0;
+	let money = 50;
 	let moneyElement = document.getElementById('money');
+	let employeeElement = document.getElementById('employees');
 	let ammountPerClick = 0.0001;
 	let tickAmount = 0;
+	let numEmployees = 0;
+	let employeeProfit = 10;
+	let numManager = 0;
+	let managerCost = 30;
 	
-	let numberFormat = new Intl.NumberFormat(undefined,{maximumFractionDigits:6});
+	let numberFormat = new Intl.NumberFormat(undefined,{maximumFractionDigits:3});
 	moneyElement.innerHTML = '$'+ numberFormat.format( money);
 	
 	
 	
 	let items = {};
-	items.raise = {cost: 0.01,raise: 0.0001};
-	items.mouse= {cost: 0.1,raise: 0.001};
-	items.keyboard = {cost: 1.0,raise: 0.01};
-	items.hour  =  {cost: 10,raise: 0.0, tick: 0.001 };
+	items.employee = {cost: 5.00 };
 	
 	// blogger
 	// server
@@ -27,62 +29,52 @@
 		refreshMoney();
 	}
 	
-	function purchase(item){
-		console.log('purchase');
-		//ammountPerClick += 0.0001;
+	
+	function buyEmployee(item){
 		if(money >= items[item].cost){
-			money -= items[item].cost;
-			ammountPerClick += items[item].raise;
-			
-			if(items[item].tick !== undefined){
-				tickAmount += items[item].tick;
-			}
-			
+			money -= items[item].cost;			
+			numEmployees ++;			
+			refreshMoney();
+			refresheEmployeeCount();
 		}
-		refreshMoney();
 	}
+	
+
 	function refreshMoney(){
 		moneyElement.innerHTML = '$'+ numberFormat.format( money);
+	}
+	function refresheEmployeeCount(){
+		employeeElement.innerHTML = numEmployees;
 	}
 	
 	
 	function startTick(){
-//		let i = 0;
-//		for(var v of tick()){
-//			console.log(i);
-//			i++;
-//			if(i > 10)
-//				break;
-//		}
-		tick2();
-	}
-	
-	function tick2(){
 		var promise = new Promise(function(resolve){
 			setTimeout(function(){
-				//console.log('resolve');
+//				console.log('resolve');
 				resolve('ticked');
-			},100);
+			},1000);
 		});
 		
 		promise.then(function(res){
-			//console.log(res);
-			money+=tickAmount;
+//			console.log(res);
+			//console.log(calculateRate());
+			money+=calculateRate();
 			refreshMoney();
-			tick2();
+			refresheEmployeeCount();
+			startTick();
 		});
-		
-	};
-	function *tick(){
-		while(true){
-			//console.log('tick');
-			setTimeout(function(){
-				console.log('hate');
-			},1000);
-			yield;	
-			
-		}
 	}
+	
+	function calculateRate(){
+		console.log(numEmployees);
+		var managerCost = numManager * managerCost;
+		var ep = numEmployees * employeeProfit;
+		ep *= 1 + numManager;
+		return numEmployees * employeeProfit / 60;
+	}
+	
+	
 	
 	startTick();
 //})();
