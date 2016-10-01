@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+   	<!-- bower:css -->
+    <!-- bower installed css files will go here... -->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    
+<!--     <script src="http://cdn.babylonjs.com/2-4/babylon.js"></script> -->
+    
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HTML Clicker</title>
+    
+    <!-- bower:js -->
+    <!-- bower installed scripts will go here... -->
+    <!-- endinject -->
+    
+</head>
+
+<body>
+
+<div style="text-align: center;">
+<h2>Welcome, You may never leave!</h2>
+<span>Money: <span id = "money"></span></span>
+<br> 
+<br> 
+<button onclick="incrementMoney()">Generate Cash $$</button>
+
+<br>
+<br>
+<button id="raise" onclick="purchase('raise')" >Buy a Raise ($.01)</button>
+
+<br>
+<br>
+<button id="mouse" onclick="purchase('mouse')">Buy a mouse ($.10)</button>
+
+<br>
+<br>
+<button id="keyboard" onclick="purchase('keyboard')">Buy a keyboard ($1.00)</button>
+
+
+<br>
+<br>
+<button id="hour" onclick="purchase('hour')">Paid by the hour ($10.00)</button>
+
+
+
+
+
+</div>
+
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+  	
+</body>
+</html>

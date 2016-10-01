@@ -1,0 +1,30 @@
+{
+  "name": "htmlclicker",
+  "version": "1.0.0",
+  "description": "clicker game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clicker"
+  ],
+  "author": "Shane Dublin",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.14.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-replace": "^0.5.4",
+    "jshint": "^2.9.3",
+    "main-bower-files": "^2.13.1",
+    "nodemon": "^1.10.2",
+    "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
